@@ -12,17 +12,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+   <?= $form->field($model, 'id_user')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\User::find()->all(), 'id', 'login')
+    ) ?>
 
-    <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'rating')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'id_product')->textInput() ?>
+    <?= $form->field($model, 'id_product')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\Product::find()->all(), 'id', 'name')
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
