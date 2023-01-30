@@ -12,12 +12,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+    <?= $form->field($model, 'id_user')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\User::find()->all(), 'id', 'login')
+    ) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_town')->textInput() ?>
-
+    <?= $form->field($model, 'id_town')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\Town::find()->all(), 'id', 'name')
+    ) ?>
     <?= $form->field($model, 'street')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'house_number')->textInput(['maxlength' => true]) ?>
@@ -27,7 +30,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

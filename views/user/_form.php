@@ -14,26 +14,28 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'phone')->textInput() ?>
+    <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
+        'mask' => '+7 (999) 999 99 99',]);?>
 
     <?= $form->field($model, 'login')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_town')->textInput() ?>
+    <?= $form->field($model, 'id_town')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\Town::find()->all(), 'id', 'name')
+    ) ?>
 
-    <?= $form->field($model, 'date_of_birth')->textInput() ?>
+    <?= $form->field($model, 'date_of_birth')->textInput(['type' => 'datetime-local']) ?>
 
     <?= $form->field($model, 'sex')->dropDownList([ 'муж' => 'Муж', 'жен' => 'Жен', ], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'currency')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'currency')->dropDownList([ 'rub' => 'rub', 'euro' => 'euro', 'usd' => ' usd', ], ['prompt' => ''])  ?>
 
-    <?= $form->field($model, 'role')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

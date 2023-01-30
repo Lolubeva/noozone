@@ -12,7 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+    <?= $form->field($model, 'id_user')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\User::find()->all(), 'id', 'login')
+    ) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -24,10 +26,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'updated_at')->textInput() ?>
 
-    <?= $form->field($model, 'created_by')->textInput() ?>
+    <?= $form->field($model, 'created_by')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\User::find()->all(), 'id', 'login')
+    )  ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -24,20 +24,25 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'characteristic')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'id_company')->textInput() ?>
+    <?= $form->field($model, 'id_company')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\Company::find()->all(), 'id', 'name')
+    )  ?>
 
     <?= $form->field($model, 'rating')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput(['type' => 'datetime-local']) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput(['type' => 'datetime-local']) ?>
 
-    <?= $form->field($model, 'created_by')->textInput() ?>
+    <?= $form->field($model, 'created_by')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\User::find()->all(), 'id', 'login')
+    )  ?>
 
-    <?= $form->field($model, 'id_category')->textInput() ?>
-
+    <?= $form->field($model, 'id_category')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\Category::find()->all(), 'id', 'name')
+    )  ?>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

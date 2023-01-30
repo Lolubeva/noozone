@@ -17,9 +17,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'phone', 'id_town'], 'integer'],
-            [['email', 'login', 'password', 'date_of_birth', 'sex', 'avatar', 'role'], 'safe'],
-            [['currency'], 'number'],
+            [['id', 'id_town'], 'integer'],
+            [['email',  'phone', 'currency', 'login', 'password', 'date_of_birth', 'sex', 'avatar', 'role'], 'safe'],
         ];
     }
 

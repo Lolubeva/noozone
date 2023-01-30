@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\BankCard $model */
 
-$this->title = 'Create Bank Card';
-$this->params['breadcrumbs'][] = ['label' => 'Bank Cards', 'url' => ['index']];
+$this->title = 'Создать банковскую карту';
+$this->params['breadcrumbs'][] = ['label' => 'Банковская карта', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bank-card-create">

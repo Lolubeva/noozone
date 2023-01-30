@@ -14,10 +14,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'number')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+    <?= $form->field($model, 'id_user')->dropDownList(
+        \yii\helpers\ArrayHelper::map(\app\models\User::find()->all(), 'id', 'login')
+    ) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

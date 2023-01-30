@@ -9,14 +9,14 @@ use Yii;
  *
  * @property int $id
  * @property string $email
- * @property int $phone
+ * @property string $phone
  * @property string $login
  * @property string $password
  * @property int $id_town
  * @property string $date_of_birth
  * @property string $sex
  * @property string $avatar
- * @property float $currency
+ * @property string $currency
  * @property string $role
  *
  * @property BankCard[] $bankCards
@@ -44,10 +44,11 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['email', 'phone', 'login', 'password', 'id_town', 'date_of_birth', 'sex', 'avatar', 'currency', 'role'], 'required'],
-            [['phone', 'id_town'], 'integer'],
+            [['id_town'], 'integer'],
+            [['phone'], 'string', 'max' => 100],
             [['date_of_birth'], 'safe'],
             [['sex'], 'string'],
-            [['currency'], 'number'],
+            [['currency'], 'string'],
             [['email', 'login', 'password', 'avatar'], 'string', 'max' => 255],
             [['role'], 'string', 'max' => 50],
             [['id_town'], 'exist', 'skipOnError' => true, 'targetClass' => Town::class, 'targetAttribute' => ['id_town' => 'id']],
@@ -143,4 +144,5 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Town::class, ['id' => 'id_town']);
     }
+
 }
