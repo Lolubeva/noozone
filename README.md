@@ -15,81 +15,31 @@
 2) Скопировать путь папки
 3) Зайти в терминал
 4)
-      cd *путь к папке domains*
-      git clone *ссылка на этот репозиторий*
+~~~
+cd *путь к папке domains*
+git clone *ссылка на этот репозиторий*
+~~~
+5) В папке OSPanel/domains появится папка с названием NoOzone
 
 
-
-REQUIREMENTS
+ЗАПУСК OSPANEL
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 5.6.0.
+1) Перейти C:\OSPanel
+2) Запустить Open Server Panel
+3) В панели задач необходимо нажать на красный флажок
+4) После того, как флажок стал зеленым необходимо перейти в Дополнительно->PhpMyAdmin
 
 
-INSTALLATION
+УСТАНОВКА БАЗЫ ДАННЫХ
 ------------
 
-### Install via Composer
-
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
+1) На главной странице PhpMyAdmin в поле "Пользователь" необходимо прописать 
 ~~~
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+root
 ~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-### Install with Docker
-
-Update your vendor packages
-
-    docker-compose run --rm php composer update --prefer-dist
-    
-Run the installation triggers (creating cookie validation code)
-
-    docker-compose run --rm php composer install    
-    
-Start the container
-
-    docker-compose up -d
-    
-You can then access the application through the following URL:
-
-    http://127.0.0.1:8000
-
-**NOTES:** 
-- Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
-- The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
-
+поле пароля оставить пустым
+2) 
 
 CONFIGURATION
 -------------
