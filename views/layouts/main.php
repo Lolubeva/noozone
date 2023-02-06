@@ -52,6 +52,8 @@ AppAsset::register($this);
             ['label' => 'Банковская карта', 'url' => ['bank-card/index']],
             ['label' => 'О нас', 'url' => ['/site/about']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
+            ['label' => 'Signup', 'url' => ['/site/signup']],
+
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
