@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'passwordConfirm')->passwordInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'id_town')->dropDownList(
         \yii\helpers\ArrayHelper::map(\app\models\Town::find()->all(), 'id', 'name')
     ) ?>
@@ -33,6 +35,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'currency')->dropDownList([ 'rub' => 'rub', 'euro' => 'euro', 'usd' => ' usd', ], ['prompt' => ''])  ?>
 
+    <?= $form->field($model, 'agree')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

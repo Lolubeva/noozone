@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -27,7 +28,7 @@ use Yii;
  * @property ShoppingCart[] $shoppingCarts
  * @property Town $town
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -145,4 +146,39 @@ class User extends \yii\db\ActiveRecord
         return $this->hasOne(Town::class, ['id' => 'id_town']);
     }
 
+
+
+    public static function findIdentity($id)
+      {
+          return self::findOne($id);
+      }
+
+     public static function findByUserName($username)
+      {
+             return static::find()->where(['login'=> $username]) ->one();
+      }
+
+      public function getId()
+      {
+             return $this->id;
+         }
+
+      public function getAuthKey()
+      {
+
+      }
+
+      public function validateAuthKey($authKey)
+      {
+
+      }
+
+    public function validatePassword($password)
+    {
+        return $this->password === $password;
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+    }
 }

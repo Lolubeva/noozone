@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\RegForm;
 use app\models\User;
 use app\models\UserSearch;
 use yii\helpers\VarDumper;
@@ -68,13 +69,13 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new RegForm();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) ) {
                 $model->role = "1";
                 $model->save();
-            //  VarDumper::dump($model->errors,10,true);
+          // VarDumper::dump($model->errors,10,true);
               return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
