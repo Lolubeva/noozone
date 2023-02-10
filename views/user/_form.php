@@ -17,9 +17,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
         'mask' => '+7 (999) 999 99 99',]);?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'login')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'id_town')->dropDownList(
         \yii\helpers\ArrayHelper::map(\app\models\Town::find()->all(), 'id', 'name')
