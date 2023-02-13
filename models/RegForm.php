@@ -36,8 +36,14 @@ class RegForm extends User
     public function rules()
     {
         return [
-            [['email', 'phone', 'login', 'password', 'id_town', 'date_of_birth', 'sex', 'avatar', 'currency', 'role'], 'required'],
+            [['email', 'phone', 'login', 'password', 'passwordConfirm', 'id_town', 'date_of_birth', 'sex', 'avatar', 'currency', 'role'], 'required', 'message' => 'Поле обязательно для заполнения'],
             [['id_town'], 'integer'],
+            ['login', 'match', 'pattern' => '/^[a-z]\w*$/i', 'message' => 'Логин начинается с буквы и содержит только латинские буквенные символы, числовые символы и знак подчеркивания'],
+            ['login', 'unique', 'message' => 'Такой логин уже используется'],
+            ['email', 'email', 'message' => 'Некоректный email-адресс'],
+            ['passwordConfirm', 'compare', 'compareAttribute' => 'password', 'message' => 'Пароль должен совпадать'],
+            ['agree', 'boolean'],
+            ['agree', 'compare', 'compareValue' => true, 'message' => 'Необходимо согласиться'],
             [['phone'], 'string', 'max' => 100],
             [['date_of_birth'], 'safe'],
             [['sex'], 'string'],

@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\RegForm;
 use app\models\User;
 use app\models\UserSearch;
+use Yii;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -73,12 +74,15 @@ class UserController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) ) {
+//            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Yii::$app->user->login($model);
                 $model->role = "1";
                 $model->save();
-          // VarDumper::dump($model->errors,10,true);
-              return $this->redirect(['view', 'id' => $model->id]);
+//           VarDumper::dump($model->errors,10,true);
+              return $this->redirect(['/user']);
             }
-        } else {
+        }
+ else {
             $model->loadDefaultValues();
         }
 
